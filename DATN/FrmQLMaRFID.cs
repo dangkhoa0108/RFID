@@ -6,7 +6,7 @@ namespace DATN
 {
     public partial class FrmRfid : Form
     {
-        RFIDEntities db = new RFIDEntities();
+        readonly RFIDEntities _db = new RFIDEntities();
         public FrmRfid()
         {
             InitializeComponent();
@@ -88,7 +88,7 @@ namespace DATN
         {
             try
             {
-                var listRfid = db.RFIDManages.Select(u => new
+                var listRfid = _db.RFIDManages.Select(u => new
                 {
                     u.RFID,
                     u.RFID_Name,
@@ -123,7 +123,7 @@ namespace DATN
             try
             {
                 int i = int.Parse(tbRFID.Text);
-                var check = db.RFIDManages.SingleOrDefault(u => u.RFID==i);
+                var check = _db.RFIDManages.SingleOrDefault(u => u.RFID==i);
                 if (check==null)
                 {
                     RFIDManage newRfid= new RFIDManage
@@ -134,8 +134,8 @@ namespace DATN
                         RFID_CarID=tbCarID.Text,
                         RFID_Money= double.Parse(tbMoney.Text)
                     };
-                    db.RFIDManages.Add(newRfid);
-                    db.SaveChanges();
+                    _db.RFIDManages.Add(newRfid);
+                    _db.SaveChanges();
                     MessageBox.Show(@"Add success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
                     BindingData();
@@ -156,14 +156,14 @@ namespace DATN
             try
             {
                 int id = int.Parse(dgvRFID.SelectedCells[0].OwningRow.Cells["RFID"].Value.ToString());
-                RFIDManage edit = db.RFIDManages.Find(id);
+                RFIDManage edit = _db.RFIDManages.Find(id);
                 if (edit != null)
                 {
                     edit.RFID_Name = tbRFIDName.Text;
                     edit.RFID_Address = tbAddress.Text;
                     edit.RFID_Money = int.Parse(tbMoney.Text);
                     edit.RFID_CarID = tbCarID.Text;
-                    db.SaveChanges();
+                    _db.SaveChanges();
                     MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
                     BindingData();
@@ -182,11 +182,11 @@ namespace DATN
         void Delete()
         {
             int id = int.Parse(dgvRFID.SelectedCells[0].OwningRow.Cells["RFID"].Value.ToString());
-            var del = db.RFIDManages.Find(id);
+            var del = _db.RFIDManages.Find(id);
             if (del != null)
             {
-                db.RFIDManages.Remove(del);
-                db.SaveChanges();
+                _db.RFIDManages.Remove(del);
+                _db.SaveChanges();
                 MessageBox.Show(@"Delete success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
                 BindingData();
@@ -196,7 +196,7 @@ namespace DATN
         void Search()
         {
             int id = int.Parse(tbSearch.Text);
-            var check = db.RFIDManages.Where(i => i.RFID == id).ToList();
+            var check = _db.RFIDManages.Where(i => i.RFID == id).ToList();
             dgvRFID.DataSource = check;
 
         }
