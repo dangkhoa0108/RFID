@@ -69,6 +69,20 @@ namespace DATN
             Delete();
         }
 
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbSearch.Text))
+            {
+                LoadData();
+            }
+            else
+            {
+                Search();
+                BindingData();
+            }
+            
+        }
+
         #region methods
         void LoadData()
         {
@@ -188,19 +202,5 @@ namespace DATN
         }
 
         #endregion
-
-        private void tbSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(tbSearch.Text))
-            {
-                LoadData();
-            }
-            else
-            {
-                Search();
-                BindingData();
-            }
-            
-        }
     }
 }
