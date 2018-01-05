@@ -10,6 +10,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Sex" Type="int" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
@@ -28,7 +29,7 @@
           <Key>
             <PropertyRef Name="RFID" />
           </Key>
-          <Property Name="RFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RFID" Type="int" Nullable="false" />
           <Property Name="RFID_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="RFID_Address" Type="nvarchar" MaxLength="50" />
           <Property Name="RFID_Money" Type="float" />
@@ -62,13 +63,13 @@
         </EntityType>
         <Association Name="FK_InfomationUser_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="InfomationUser" Type="Self.InfomationUser" Multiplicity="0..1" />
+          <End Role="InfomationUser" Type="Self.InfomationUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="InfomationUser">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -142,6 +143,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sex" Type="Int32" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -163,7 +165,7 @@
           <Key>
             <PropertyRef Name="RFID" />
           </Key>
-          <Property Name="RFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RFID" Type="Int32" Nullable="false" />
           <Property Name="RFID_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RFID_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RFID_Money" Type="Double" />
@@ -196,19 +198,19 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="InfomationUser" Relationship="Self.FK_InfomationUser_User" FromRole="User" ToRole="InfomationUser" />
+          <NavigationProperty Name="InfomationUsers" Relationship="Self.FK_InfomationUser_User" FromRole="User" ToRole="InfomationUser" />
           <NavigationProperty Name="RFID_User" Relationship="Self.FK_RFID_User_User" FromRole="User" ToRole="RFID_User" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_InfomationUser_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="InfomationUser" Type="Self.InfomationUser" Multiplicity="0..1" />
+          <End Role="InfomationUser" Type="Self.InfomationUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="InfomationUser">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -282,6 +284,7 @@
             <EntityTypeMapping TypeName="RFIDModel.InfomationUser">
               <MappingFragment StoreEntitySet="InfomationUser">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="Address" ColumnName="Address" />

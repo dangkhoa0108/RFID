@@ -1,6 +1,6 @@
 ﻿namespace DATN
 {
-    partial class FrmQLHeThong
+    partial class FrmQlHeThong
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDangXuat = new System.Windows.Forms.Button();
+            this.btnDoiMK = new System.Windows.Forms.Button();
             this.lblChucVu = new System.Windows.Forms.Label();
             this.lblDiaChi = new System.Windows.Forms.Label();
             this.lblSoDienThoai = new System.Windows.Forms.Label();
@@ -50,8 +52,6 @@
             this.quảnLýMãRFIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýHệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDoiMK = new System.Windows.Forms.Button();
-            this.btnDangXuat = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUniversity)).BeginInit();
             this.panel2.SuspendLayout();
@@ -122,6 +122,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(259, 394);
             this.panel2.TabIndex = 3;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDangXuat.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Location = new System.Drawing.Point(139, 345);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(104, 23);
+            this.btnDangXuat.TabIndex = 13;
+            this.btnDangXuat.Text = "Đăng Xuất";
+            this.btnDangXuat.UseVisualStyleBackColor = false;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // btnDoiMK
+            // 
+            this.btnDoiMK.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDoiMK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDoiMK.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoiMK.Location = new System.Drawing.Point(12, 345);
+            this.btnDoiMK.Name = "btnDoiMK";
+            this.btnDoiMK.Size = new System.Drawing.Size(104, 23);
+            this.btnDoiMK.TabIndex = 12;
+            this.btnDoiMK.Text = "Đổi Mật Khẩu";
+            this.btnDoiMK.UseVisualStyleBackColor = false;
+            this.btnDoiMK.Click += new System.EventHandler(this.btnDoiMK_Click);
             // 
             // lblChucVu
             // 
@@ -280,31 +306,7 @@
             this.quảnLýHệThốngToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.quảnLýHệThốngToolStripMenuItem.Text = "Quản Lý Hệ Thống";
             // 
-            // btnDoiMK
-            // 
-            this.btnDoiMK.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDoiMK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDoiMK.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiMK.Location = new System.Drawing.Point(12, 345);
-            this.btnDoiMK.Name = "btnDoiMK";
-            this.btnDoiMK.Size = new System.Drawing.Size(104, 23);
-            this.btnDoiMK.TabIndex = 12;
-            this.btnDoiMK.Text = "Đổi Mật Khẩu";
-            this.btnDoiMK.UseVisualStyleBackColor = false;
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDangXuat.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangXuat.Location = new System.Drawing.Point(139, 345);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(104, 23);
-            this.btnDangXuat.TabIndex = 13;
-            this.btnDangXuat.Text = "Đăng Xuất";
-            this.btnDangXuat.UseVisualStyleBackColor = false;
-            // 
-            // FrmQLHeThong
+            // FrmQlHeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -315,11 +317,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "FrmQLHeThong";
+            this.MinimizeBox = false;
+            this.Name = "FrmQlHeThong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmQLHeThong";
+            this.Text = "Main";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmQlHeThong_FormClosed);
+            this.Load += new System.EventHandler(this.FrmQlHeThong_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUniversity)).EndInit();
             this.panel2.ResumeLayout(false);

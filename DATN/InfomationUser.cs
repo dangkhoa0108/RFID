@@ -15,6 +15,7 @@ namespace DATN
     public partial class InfomationUser
     {
         public int ID { get; set; }
+        public int UserID { get; set; }
         public string Name { get; set; }
         public Nullable<int> Sex { get; set; }
         public string Address { get; set; }

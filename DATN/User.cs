@@ -17,6 +17,7 @@ namespace DATN
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.InfomationUsers = new HashSet<InfomationUser>();
             this.RFID_User = new HashSet<RFID_User>();
         }
     
@@ -25,7 +26,8 @@ namespace DATN
         public string Password { get; set; }
         public int RoleID { get; set; }
     
-        public virtual InfomationUser InfomationUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InfomationUser> InfomationUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RFID_User> RFID_User { get; set; }
         public virtual Role Role { get; set; }

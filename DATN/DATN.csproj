@@ -94,6 +94,7 @@
     <Compile Include="InfomationUser.cs">
       <DependentUpon>RFIDEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoginInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RFIDEntity.Context.cs">
