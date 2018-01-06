@@ -69,7 +69,7 @@ namespace DATN
 
         private void QLNhanVienToolStrip_Click(object sender, EventArgs e)
         {
-            var qLNhanVien= new FrmQlttNhanVien();
+            var qLNhanVien= new FrmQLTTNhanVien();
             qLNhanVien.Show();
             Hide();
         }

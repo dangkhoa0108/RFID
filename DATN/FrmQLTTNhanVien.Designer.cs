@@ -1,6 +1,6 @@
 ﻿namespace DATN
 {
-    partial class FrmQlttNhanVien
+    partial class FrmQLTTNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,12 @@
             this.txtMaNV = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvQLTTNhanVien = new System.Windows.Forms.DataGridView();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,12 +54,6 @@
             this.picBoxQLTTNhanVien = new System.Windows.Forms.PictureBox();
             this.cbGioiTinh = new System.Windows.Forms.ComboBox();
             this.cbChucVu = new System.Windows.Forms.ComboBox();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLTTNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxQLTTNhanVien)).BeginInit();
             this.SuspendLayout();
@@ -151,6 +151,43 @@
             this.dgvQLTTNhanVien.Size = new System.Drawing.Size(654, 331);
             this.dgvQLTTNhanVien.TabIndex = 18;
             // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "Mã NV";
+            this.UserID.Name = "UserID";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Tên";
+            this.Name.Name = "Name";
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.HeaderText = "Giới Tính";
+            this.Sex.Name = "Sex";
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Địa Chỉ";
+            this.Address.Name = "Address";
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "Số Điện Thoại";
+            this.Phone.Name = "Phone";
+            // 
+            // Role1
+            // 
+            this.Role1.DataPropertyName = "Role1";
+            this.Role1.HeaderText = "Chức Vụ";
+            this.Role1.Name = "Role1";
+            this.Role1.ReadOnly = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -222,6 +259,7 @@
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnTim
             // 
@@ -249,6 +287,9 @@
             // cbGioiTinh
             // 
             this.cbGioiTinh.FormattingEnabled = true;
+            this.cbGioiTinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
             this.cbGioiTinh.Location = new System.Drawing.Point(89, 96);
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(126, 21);
@@ -262,44 +303,7 @@
             this.cbChucVu.Size = new System.Drawing.Size(126, 21);
             this.cbChucVu.TabIndex = 25;
             // 
-            // UserID
-            // 
-            this.UserID.DataPropertyName = "UserID";
-            this.UserID.HeaderText = "Mã NV";
-            this.UserID.Name = "UserID";
-            // 
-            // Name
-            // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Tên";
-            this.Name.Name = "Name";
-            // 
-            // Sex
-            // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "Giới Tính";
-            this.Sex.Name = "Sex";
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Địa Chỉ";
-            this.Address.Name = "Address";
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "Số Điện Thoại";
-            this.Phone.Name = "Phone";
-            // 
-            // Role1
-            // 
-            this.Role1.DataPropertyName = "Role1";
-            this.Role1.HeaderText = "Chức Vụ";
-            this.Role1.Name = "Role1";
-            this.Role1.ReadOnly = true;
-            // 
-            // FrmQlttNhanVien
+            // FrmQLTTNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

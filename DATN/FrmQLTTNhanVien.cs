@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace DATN
 {
-    public partial class FrmQlttNhanVien : Form
+    public partial class FrmQLTTNhanVien : Form
     {
-        RFIDEntities _db= new RFIDEntities();
-        public FrmQlttNhanVien()
+        RFIDEntities _db = new RFIDEntities();
+        public FrmQLTTNhanVien()
         {
             InitializeComponent();
             LoadData();
@@ -22,22 +22,24 @@ namespace DATN
 
         private void txtMaNV_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == 13)
+                txtHoTen.Focus();
         }
 
         private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == 13)
+                txtSoDienThoai.Focus();
         }
 
         private void txtSoDienThoai_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == 13)
+                txtDiaChi.Focus();
         }
 
         private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
         {
-
         }
 
         private void txtTim_KeyPress(object sender, KeyPressEventArgs e)
@@ -47,7 +49,7 @@ namespace DATN
 
         private void FrmQLTTNhanVien_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var frmMain= new FrmQlHeThong();
+            var frmMain = new FrmQlHeThong();
             frmMain.Show();
             Hide();
         }
@@ -75,7 +77,7 @@ namespace DATN
                 }
                 else
                 {
-                    var listNhanVien = _db.InfomationUsers.Where(u=>u.UserID.Equals(id)).Select(u => new
+                    var listNhanVien = _db.InfomationUsers.Where(u => u.UserID.Equals(id)).Select(u => new
                     {
                         u.UserID,
                         u.Name,
@@ -120,6 +122,35 @@ namespace DATN
             cbChucVu.DataBindings.Add(new Binding("Text", dgvQLTTNhanVien.DataSource, "Role1"));
         }
 
+        void Add()
+        {
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
         #endregion
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result; 
+                result=MessageBox.Show(@"First, Add Nomal User and Pass ", @"Warring", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK)
+                {
+                    var frmCreate= new frmCreateUser();
+                    frmCreate.ShowDialog();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
     }
 }
