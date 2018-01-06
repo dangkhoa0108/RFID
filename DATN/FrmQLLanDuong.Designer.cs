@@ -30,15 +30,19 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.picBoxConnecting = new System.Windows.Forms.PictureBox();
             this.lblTrangthai = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.picBoxTime = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvQLTTKhachHang = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.picBoxBarrier = new System.Windows.Forms.PictureBox();
+            this.btnDong = new System.Windows.Forms.Button();
+            this.btnMo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,19 +52,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtMaRFID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnMo = new System.Windows.Forms.Button();
-            this.btnDong = new System.Windows.Forms.Button();
-            this.picBoxBarrier = new System.Windows.Forms.PictureBox();
-            this.picBoxTime = new System.Windows.Forms.PictureBox();
-            this.picBoxConnecting = new System.Windows.Forms.PictureBox();
+            this.lstRFID = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQLTTKhachHang)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxBarrier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxConnecting)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxTime)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxBarrier)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -91,17 +90,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "KẾT NỐI MÁY TÍNH";
             // 
-            // button1
+            // picBoxConnecting
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(9, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Kết nối";
-            this.button1.UseVisualStyleBackColor = false;
+            this.picBoxConnecting.Image = global::DATN.Properties.Resources.tutorial_serial_data_sensor;
+            this.picBoxConnecting.Location = new System.Drawing.Point(367, 22);
+            this.picBoxConnecting.Name = "picBoxConnecting";
+            this.picBoxConnecting.Size = new System.Drawing.Size(179, 63);
+            this.picBoxConnecting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxConnecting.TabIndex = 3;
+            this.picBoxConnecting.TabStop = false;
+            // 
+            // lblTrangthai
+            // 
+            this.lblTrangthai.Location = new System.Drawing.Point(131, 56);
+            this.lblTrangthai.Name = "lblTrangthai";
+            this.lblTrangthai.Size = new System.Drawing.Size(71, 19);
+            this.lblTrangthai.TabIndex = 3;
+            this.lblTrangthai.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(131, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Trạng thái";
             // 
             // button2
             // 
@@ -115,22 +129,17 @@
             this.button2.Text = "Ngắt";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(131, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Trạng thái";
-            // 
-            // lblTrangthai
-            // 
-            this.lblTrangthai.Location = new System.Drawing.Point(131, 56);
-            this.lblTrangthai.Name = "lblTrangthai";
-            this.lblTrangthai.Size = new System.Drawing.Size(71, 19);
-            this.lblTrangthai.TabIndex = 3;
-            this.lblTrangthai.Text = "label3";
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(9, 23);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Kết nối";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
@@ -143,6 +152,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "NGÀY GIỜ HỆ THỐNG";
             // 
+            // picBoxTime
+            // 
+            this.picBoxTime.Image = global::DATN.Properties.Resources.Blacksmith_Stylized_Numbers_Wall_Clock___Black_517797;
+            this.picBoxTime.Location = new System.Drawing.Point(6, 22);
+            this.picBoxTime.Name = "picBoxTime";
+            this.picBoxTime.Size = new System.Drawing.Size(112, 63);
+            this.picBoxTime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxTime.TabIndex = 0;
+            this.picBoxTime.TabStop = false;
+            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.PowderBlue;
@@ -154,14 +173,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "THÔNG TIN KHÁCH HÀNG";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvQLTTKhachHang
-            // 
-            this.dgvQLTTKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvQLTTKhachHang.Location = new System.Drawing.Point(219, 2);
-            this.dgvQLTTKhachHang.Name = "dgvQLTTKhachHang";
-            this.dgvQLTTKhachHang.Size = new System.Drawing.Size(330, 180);
-            this.dgvQLTTKhachHang.TabIndex = 8;
             // 
             // label8
             // 
@@ -188,13 +199,46 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ĐIỀU KHIỂN BARRIER";
             // 
+            // picBoxBarrier
+            // 
+            this.picBoxBarrier.Image = global::DATN.Properties.Resources.barrier_systems_1;
+            this.picBoxBarrier.Location = new System.Drawing.Point(6, 22);
+            this.picBoxBarrier.Name = "picBoxBarrier";
+            this.picBoxBarrier.Size = new System.Drawing.Size(139, 75);
+            this.picBoxBarrier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxBarrier.TabIndex = 1;
+            this.picBoxBarrier.TabStop = false;
+            // 
+            // btnDong
+            // 
+            this.btnDong.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDong.Location = new System.Drawing.Point(230, 54);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(75, 43);
+            this.btnDong.TabIndex = 1;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
+            // 
+            // btnMo
+            // 
+            this.btnMo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnMo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMo.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMo.Location = new System.Drawing.Point(151, 54);
+            this.btnMo.Name = "btnMo";
+            this.btnMo.Size = new System.Drawing.Size(75, 43);
+            this.btnMo.TabIndex = 0;
+            this.btnMo.Text = "Mở";
+            this.btnMo.UseVisualStyleBackColor = false;
+            // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.lstRFID);
             this.panel1.Controls.Add(this.txtSoTien);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtBienSo);
-            this.panel1.Controls.Add(this.dgvQLTTKhachHang);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtTenDangKy);
             this.panel1.Controls.Add(this.label6);
@@ -273,58 +317,13 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Mã RFID";
             // 
-            // btnMo
+            // lstRFID
             // 
-            this.btnMo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnMo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMo.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMo.Location = new System.Drawing.Point(151, 54);
-            this.btnMo.Name = "btnMo";
-            this.btnMo.Size = new System.Drawing.Size(75, 43);
-            this.btnMo.TabIndex = 0;
-            this.btnMo.Text = "Mở";
-            this.btnMo.UseVisualStyleBackColor = false;
-            // 
-            // btnDong
-            // 
-            this.btnDong.BackColor = System.Drawing.Color.SandyBrown;
-            this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDong.Location = new System.Drawing.Point(230, 54);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(75, 43);
-            this.btnDong.TabIndex = 1;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = false;
-            // 
-            // picBoxBarrier
-            // 
-            this.picBoxBarrier.Image = global::DATN.Properties.Resources.barrier_systems_1;
-            this.picBoxBarrier.Location = new System.Drawing.Point(6, 22);
-            this.picBoxBarrier.Name = "picBoxBarrier";
-            this.picBoxBarrier.Size = new System.Drawing.Size(139, 75);
-            this.picBoxBarrier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxBarrier.TabIndex = 1;
-            this.picBoxBarrier.TabStop = false;
-            // 
-            // picBoxTime
-            // 
-            this.picBoxTime.Image = global::DATN.Properties.Resources.Blacksmith_Stylized_Numbers_Wall_Clock___Black_517797;
-            this.picBoxTime.Location = new System.Drawing.Point(6, 22);
-            this.picBoxTime.Name = "picBoxTime";
-            this.picBoxTime.Size = new System.Drawing.Size(112, 63);
-            this.picBoxTime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxTime.TabIndex = 0;
-            this.picBoxTime.TabStop = false;
-            // 
-            // picBoxConnecting
-            // 
-            this.picBoxConnecting.Image = global::DATN.Properties.Resources.tutorial_serial_data_sensor;
-            this.picBoxConnecting.Location = new System.Drawing.Point(367, 22);
-            this.picBoxConnecting.Name = "picBoxConnecting";
-            this.picBoxConnecting.Size = new System.Drawing.Size(179, 63);
-            this.picBoxConnecting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxConnecting.TabIndex = 3;
-            this.picBoxConnecting.TabStop = false;
+            this.lstRFID.FormattingEnabled = true;
+            this.lstRFID.Location = new System.Drawing.Point(237, 4);
+            this.lstRFID.Name = "lstRFID";
+            this.lstRFID.Size = new System.Drawing.Size(309, 173);
+            this.lstRFID.TabIndex = 8;
             // 
             // FrmQLLanDuong
             // 
@@ -345,14 +344,13 @@
             this.Load += new System.EventHandler(this.FrmQLLanDuong_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxConnecting)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQLTTKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxTime)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxBarrier)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxBarrier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxConnecting)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,7 +365,6 @@
         private System.Windows.Forms.Label lblTrangthai;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvQLTTKhachHang;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel1;
@@ -384,5 +381,6 @@
         private System.Windows.Forms.Button btnMo;
         private System.Windows.Forms.PictureBox picBoxConnecting;
         private System.Windows.Forms.PictureBox picBoxTime;
+        private System.Windows.Forms.ListBox lstRFID;
     }
 }

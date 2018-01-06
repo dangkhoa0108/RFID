@@ -12,16 +12,24 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sex" Type="int" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoaiXe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiXe" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoTien" Type="float" />
         </EntityType>
         <EntityType Name="RFID_User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RFID" Type="int" Nullable="false" />
+          <Property Name="RFID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserID" Type="int" />
           <Property Name="Date" Type="date" />
         </EntityType>
@@ -29,11 +37,12 @@
           <Key>
             <PropertyRef Name="RFID" />
           </Key>
-          <Property Name="RFID" Type="int" Nullable="false" />
+          <Property Name="RFID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RFID_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="RFID_Address" Type="nvarchar" MaxLength="50" />
           <Property Name="RFID_Money" Type="float" />
           <Property Name="RFID_CarID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RFID_LoaiXe" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -97,6 +106,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RFIDManage_LoaiXe">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
+          <End Role="RFIDManage" Type="Self.RFIDManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RFIDManage">
+              <PropertyRef Name="RFID_LoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -111,6 +132,7 @@
         </Association>
         <EntityContainer Name="RFIDModelStoreContainer">
           <EntitySet Name="InfomationUser" EntityType="Self.InfomationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiXe" EntityType="Self.LoaiXe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RFID_User" EntityType="Self.RFID_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RFIDManage" EntityType="Self.RFIDManage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -127,6 +149,10 @@
           <AssociationSet Name="FK_RFID_User_User" Association="Self.FK_RFID_User_User">
             <End Role="User" EntitySet="User" />
             <End Role="RFID_User" EntitySet="RFID_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RFIDManage_LoaiXe" Association="Self.FK_RFIDManage_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXe" />
+            <End Role="RFIDManage" EntitySet="RFIDManage" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -145,17 +171,26 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="Int32" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK_InfomationUser_User" FromRole="InfomationUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="LoaiXe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiXe1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoTien" Type="Double" />
+          <NavigationProperty Name="RFIDManages" Relationship="Self.FK_RFIDManage_LoaiXe" FromRole="LoaiXe" ToRole="RFIDManage" />
         </EntityType>
         <EntityType Name="RFID_User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RFID" Type="Int32" Nullable="false" />
+          <Property Name="RFID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="RFIDManage" Relationship="Self.FK_RFID_User_RFIDManage" FromRole="RFID_User" ToRole="RFIDManage" />
@@ -165,11 +200,13 @@
           <Key>
             <PropertyRef Name="RFID" />
           </Key>
-          <Property Name="RFID" Type="Int32" Nullable="false" />
+          <Property Name="RFID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RFID_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RFID_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RFID_Money" Type="Double" />
           <Property Name="RFID_CarID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RFID_LoaiXe" Type="Int32" />
+          <NavigationProperty Name="LoaiXe" Relationship="Self.FK_RFIDManage_LoaiXe" FromRole="RFIDManage" ToRole="LoaiXe" />
           <NavigationProperty Name="RFID_User" Relationship="Self.FK_RFID_User_RFIDManage" FromRole="RFIDManage" ToRole="RFID_User" />
         </EntityType>
         <EntityType Name="Role">
@@ -214,6 +251,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RFIDManage_LoaiXe">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
+          <End Role="RFIDManage" Type="Self.RFIDManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RFIDManage">
+              <PropertyRef Name="RFID_LoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RFID_User_RFIDManage">
           <End Role="RFIDManage" Type="Self.RFIDManage" Multiplicity="1" />
           <End Role="RFID_User" Type="Self.RFID_User" Multiplicity="*" />
@@ -252,6 +301,7 @@
         </Association>
         <EntityContainer Name="RFIDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="InfomationUsers" EntityType="Self.InfomationUser" />
+          <EntitySet Name="LoaiXes" EntityType="Self.LoaiXe" />
           <EntitySet Name="RFID_User" EntityType="Self.RFID_User" />
           <EntitySet Name="RFIDManages" EntityType="Self.RFIDManage" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -260,6 +310,10 @@
           <AssociationSet Name="FK_InfomationUser_User" Association="Self.FK_InfomationUser_User">
             <End Role="User" EntitySet="Users" />
             <End Role="InfomationUser" EntitySet="InfomationUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RFIDManage_LoaiXe" Association="Self.FK_RFIDManage_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXes" />
+            <End Role="RFIDManage" EntitySet="RFIDManages" />
           </AssociationSet>
           <AssociationSet Name="FK_RFID_User_RFIDManage" Association="Self.FK_RFID_User_RFIDManage">
             <End Role="RFIDManage" EntitySet="RFIDManages" />
@@ -292,6 +346,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LoaiXes">
+            <EntityTypeMapping TypeName="RFIDModel.LoaiXe">
+              <MappingFragment StoreEntitySet="LoaiXe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoaiXe1" ColumnName="LoaiXe" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RFID_User">
             <EntityTypeMapping TypeName="RFIDModel.RFID_User">
               <MappingFragment StoreEntitySet="RFID_User">
@@ -310,6 +373,7 @@
                 <ScalarProperty Name="RFID_Address" ColumnName="RFID_Address" />
                 <ScalarProperty Name="RFID_Money" ColumnName="RFID_Money" />
                 <ScalarProperty Name="RFID_CarID" ColumnName="RFID_CarID" />
+                <ScalarProperty Name="RFID_LoaiXe" ColumnName="RFID_LoaiXe" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

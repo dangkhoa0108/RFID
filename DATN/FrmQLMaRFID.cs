@@ -94,9 +94,16 @@ namespace DATN
                     u.RFID_Name,
                     u.RFID_Address,
                     u.RFID_CarID,
-                    u.RFID_Money
+                    u.RFID_Money,
+                    u.LoaiXe.LoaiXe1
                 });
                 dgvRFID.DataSource = listRfid.ToList();
+
+                var listLoaiXe = _db.LoaiXes.ToList();
+                if (listLoaiXe.Count <= 0) return;
+                cbLoaiXe.DataSource = listLoaiXe;
+                cbLoaiXe.DisplayMember = "LoaiXe1";
+                cbLoaiXe.ValueMember = "ID";
             }
             catch (Exception e)
             {
@@ -111,28 +118,31 @@ namespace DATN
             tbCarID.DataBindings.Clear();
             tbMoney.DataBindings.Clear();
             tbAddress.DataBindings.Clear();
+            cbLoaiXe.DataBindings.Clear();
             tbRFID.DataBindings.Add(new Binding("Text", dgvRFID.DataSource, "RFID"));
             tbRFIDName.DataBindings.Add(new Binding("Text", dgvRFID.DataSource, "RFID_Name"));
             tbCarID.DataBindings.Add(new Binding("Text", dgvRFID.DataSource, "RFID_CarID"));
             tbMoney.DataBindings.Add(new Binding("Text", dgvRFID.DataSource, "RFID_Money", true, DataSourceUpdateMode.OnPropertyChanged));
             tbAddress.DataBindings.Add(new Binding("Text", dgvRFID.DataSource, "RFID_Address"));
+            cbLoaiXe.DataBindings.Add(new Binding("Text", dgvRFID.DataSource, "LoaiXe1"));
         }
 
         void Add()
         {
             try
             {
-                int i = int.Parse(tbRFID.Text);
-                var check = _db.RFIDManages.SingleOrDefault(u => u.RFID == i);
+                string i = tbRFID.Text;
+                var check = _db.RFIDManages.SingleOrDefault(u => u.RFID.Equals(i));
                 if (check == null)
                 {
                     RFIDManage newRfid = new RFIDManage
                     {
-                        RFID = int.Parse(tbRFID.Text),
+                        RFID = tbRFID.Text,
                         RFID_Name = tbRFIDName.Text,
                         RFID_Address = tbAddress.Text,
                         RFID_CarID = tbCarID.Text,
-                        RFID_Money = double.Parse(tbMoney.Text)
+                        RFID_Money = double.Parse(tbMoney.Text),
+                        RFID_LoaiXe = int.Parse(cbLoaiXe.SelectedValue.ToString())
                     };
                     _db.RFIDManages.Add(newRfid);
                     _db.SaveChanges();
@@ -155,7 +165,7 @@ namespace DATN
         {
             try
             {
-                int id = int.Parse(dgvRFID.SelectedCells[0].OwningRow.Cells["RFID"].Value.ToString());
+                string id = dgvRFID.SelectedCells[0].OwningRow.Cells["RFID"].Value.ToString();
                 RFIDManage edit = _db.RFIDManages.Find(id);
                 if (edit != null)
                 {
@@ -163,6 +173,7 @@ namespace DATN
                     edit.RFID_Address = tbAddress.Text;
                     edit.RFID_Money = int.Parse(tbMoney.Text);
                     edit.RFID_CarID = tbCarID.Text;
+                    edit.RFID_LoaiXe = int.Parse(cbLoaiXe.SelectedValue.ToString());
                     _db.SaveChanges();
                     MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
@@ -181,19 +192,26 @@ namespace DATN
 
         void Delete()
         {
-            int id = int.Parse(dgvRFID.SelectedCells[0].OwningRow.Cells["RFID"].Value.ToString());
-            var del = _db.RFIDManages.Find(id);
-            if (del != null)
+            try
             {
-                _db.RFIDManages.Remove(del);
-                _db.SaveChanges();
-                MessageBox.Show(@"Delete success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData();
-                BindingData();
+                string id = dgvRFID.SelectedCells[0].OwningRow.Cells["RFID"].Value.ToString();
+                var del = _db.RFIDManages.Find(id);
+                if (del != null)
+                {
+                    _db.RFIDManages.Remove(del);
+                    _db.SaveChanges();
+                    MessageBox.Show(@"Delete success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    BindingData();
+                }
+                else
+                {
+                    MessageBox.Show(@"Delete Error", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception e)
             {
-                MessageBox.Show(@"Delete Error", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -201,24 +219,24 @@ namespace DATN
         {
             try
             {
-                string input = tbSearch.Text;
-                bool isNumber = int.TryParse(input, out var checkIsNumber);
-                if (isNumber)
+                string textRfid = tbSearch.Text;
+                var checkString = _db.RFIDManages.Where(i => i.RFID_Name.Equals(textRfid)
+                                                             || i.RFID_Address.Equals(textRfid) ||
+                                                             i.RFID_CarID.Contains(textRfid) || i.RFID.Contains(textRfid) ||
+                                                             i.LoaiXe.LoaiXe1.Contains(textRfid)).Select(u => new
+                                                             {
+                                                                 u.RFID,
+                                                                 u.RFID_Name,
+                                                                 u.RFID_Address,
+                                                                 u.RFID_CarID,
+                                                                 u.RFID_Money,
+                                                                 u.LoaiXe.LoaiXe1
+                                                             });
+
+                if (checkString.ToList().Count > 0)
                 {
-                    checkIsNumber = int.Parse(tbSearch.Text);
-                    var check = _db.RFIDManages.Where(i => i.RFID.Equals(checkIsNumber)).ToList();
-                    dgvRFID.DataSource = check;
-                }
-                else
-                {
-                    string textRfid = tbSearch.Text;
-                    var checkString = _db.RFIDManages.Where(i => i.RFID_Name.Equals(textRfid)
-                                                                 || i.RFID_Address.Equals(textRfid) ||
-                                                                 i.RFID_CarID.Contains(textRfid)).ToList();
-                    if (checkString.Count > 0)
-                    {
-                        dgvRFID.DataSource = checkString;
-                    }
+                    dgvRFID.DataSource = checkString.ToList();
+                    BindingData();
                 }
             }
             catch (Exception e)
@@ -227,5 +245,12 @@ namespace DATN
             }
         }
         #endregion
+
+        private void FrmRfid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var frmMain = new FrmQlHeThong();
+            frmMain.Show();
+            Hide();
+        }
     }
 }

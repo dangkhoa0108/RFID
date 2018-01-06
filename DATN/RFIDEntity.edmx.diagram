@@ -4,14 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2e2669d86173405091fca48e06e0b1cb" Name="Diagram1">
+      <Diagram DiagramId="cb823b5ad59f4415acfc580bf3d46d81" Name="Diagram1">
         <EntityTypeShape EntityType="RFIDModel.InfomationUser" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFIDModel.LoaiXe" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RFIDModel.RFID_User" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RFIDModel.RFIDManage" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFIDModel.RFIDManage" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RFIDModel.Role" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="RFIDModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RFIDModel.User" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="RFIDModel.FK_InfomationUser_User" ManuallyRouted="false" />
+        <AssociationConnector Association="RFIDModel.FK_RFIDManage_LoaiXe" ManuallyRouted="false" />
         <AssociationConnector Association="RFIDModel.FK_RFID_User_RFIDManage" ManuallyRouted="false" />
         <AssociationConnector Association="RFIDModel.FK_RFID_User_User" ManuallyRouted="false" />
         <AssociationConnector Association="RFIDModel.FK_User_Role" ManuallyRouted="false" />

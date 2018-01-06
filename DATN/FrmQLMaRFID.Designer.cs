@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.dgvQuanLyMaRFID = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbRFID = new System.Windows.Forms.TextBox();
@@ -48,12 +47,14 @@
             this.dgvRFID = new System.Windows.Forms.DataGridView();
             this.tbAddress = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbLoaiXe = new System.Windows.Forms.ComboBox();
             this.RFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Money = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQuanLyMaRFID)).BeginInit();
+            this.LoaiXe1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRFIDTag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFID)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             this.btnSearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(10, 174);
+            this.btnSearch.Location = new System.Drawing.Point(7, 210);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 10;
@@ -76,7 +77,7 @@
             this.btnAdd.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 202);
+            this.btnAdd.Location = new System.Drawing.Point(12, 241);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 11;
@@ -89,7 +90,7 @@
             this.btnEdit.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(114, 202);
+            this.btnEdit.Location = new System.Drawing.Point(114, 241);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 12;
@@ -102,22 +103,13 @@
             this.btnDelete.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(215, 202);
+            this.btnDelete.Location = new System.Drawing.Point(215, 241);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // dgvQuanLyMaRFID
-            // 
-            this.dgvQuanLyMaRFID.AllowUserToOrderColumns = true;
-            this.dgvQuanLyMaRFID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvQuanLyMaRFID.Location = new System.Drawing.Point(315, 33);
-            this.dgvQuanLyMaRFID.Name = "dgvQuanLyMaRFID";
-            this.dgvQuanLyMaRFID.Size = new System.Drawing.Size(551, 341);
-            this.dgvQuanLyMaRFID.TabIndex = 14;
             // 
             // label1
             // 
@@ -127,7 +119,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(878, 40);
+            this.label1.Size = new System.Drawing.Size(977, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÝ MÃ RFID";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -206,7 +198,7 @@
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(91, 176);
+            this.tbSearch.Location = new System.Drawing.Point(91, 212);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(199, 20);
             this.tbSearch.TabIndex = 9;
@@ -216,7 +208,7 @@
             // picBoxRFIDTag
             // 
             this.picBoxRFIDTag.Image = global::DATN.Properties.Resources.rfid_tag;
-            this.picBoxRFIDTag.Location = new System.Drawing.Point(4, 233);
+            this.picBoxRFIDTag.Location = new System.Drawing.Point(4, 276);
             this.picBoxRFIDTag.Name = "picBoxRFIDTag";
             this.picBoxRFIDTag.Size = new System.Drawing.Size(286, 141);
             this.picBoxRFIDTag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -231,10 +223,11 @@
             this.RFID_Name,
             this.RFID_Address,
             this.RFID_Money,
-            this.RFID_CarID});
-            this.dgvRFID.Location = new System.Drawing.Point(315, 33);
+            this.RFID_CarID,
+            this.LoaiXe1});
+            this.dgvRFID.Location = new System.Drawing.Point(313, 43);
             this.dgvRFID.Name = "dgvRFID";
-            this.dgvRFID.Size = new System.Drawing.Size(551, 341);
+            this.dgvRFID.Size = new System.Drawing.Size(652, 374);
             this.dgvRFID.TabIndex = 15;
             // 
             // tbAddress
@@ -255,11 +248,30 @@
             this.lbAddress.TabIndex = 16;
             this.lbAddress.Text = "Địa Chỉ";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 180);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 15);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Loại Xe";
+            // 
+            // cbLoaiXe
+            // 
+            this.cbLoaiXe.FormattingEnabled = true;
+            this.cbLoaiXe.Location = new System.Drawing.Point(91, 178);
+            this.cbLoaiXe.Name = "cbLoaiXe";
+            this.cbLoaiXe.Size = new System.Drawing.Size(199, 21);
+            this.cbLoaiXe.TabIndex = 19;
+            // 
             // RFID
             // 
             this.RFID.DataPropertyName = "RFID";
             this.RFID.HeaderText = "RFID";
             this.RFID.Name = "RFID";
+            this.RFID.ReadOnly = true;
             // 
             // RFID_Name
             // 
@@ -276,9 +288,9 @@
             // RFID_Money
             // 
             this.RFID_Money.DataPropertyName = "RFID_Money";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.RFID_Money.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RFID_Money.DefaultCellStyle = dataGridViewCellStyle1;
             this.RFID_Money.HeaderText = "Số Tiền";
             this.RFID_Money.Name = "RFID_Money";
             // 
@@ -288,12 +300,20 @@
             this.RFID_CarID.HeaderText = "Biển Số";
             this.RFID_CarID.Name = "RFID_CarID";
             // 
+            // LoaiXe1
+            // 
+            this.LoaiXe1.DataPropertyName = "LoaiXe1";
+            this.LoaiXe1.HeaderText = "Loại Xe";
+            this.LoaiXe1.Name = "LoaiXe1";
+            // 
             // FrmRfid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(878, 376);
+            this.ClientSize = new System.Drawing.Size(977, 431);
+            this.Controls.Add(this.cbLoaiXe);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.lbAddress);
             this.Controls.Add(this.dgvRFID);
@@ -308,7 +328,6 @@
             this.Controls.Add(this.tbRFID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvQuanLyMaRFID);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -319,7 +338,7 @@
             this.Name = "FrmRfid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmQLMaRFID";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQuanLyMaRFID)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRfid_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRFIDTag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFID)).EndInit();
             this.ResumeLayout(false);
@@ -333,7 +352,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.DataGridView dgvQuanLyMaRFID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbRFID;
@@ -348,10 +366,13 @@
         private System.Windows.Forms.DataGridView dgvRFID;
         private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.Label lbAddress;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbLoaiXe;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Money;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_CarID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiXe1;
     }
 }

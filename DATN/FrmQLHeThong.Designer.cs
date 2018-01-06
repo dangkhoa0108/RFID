@@ -49,9 +49,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.picBoxNV = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.quảnLýMãRFIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quảnLýNhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quảnLýHệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.QuanLyRFIDToolTrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.QLNhanVienToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.QLLanDuongToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUniversity)).BeginInit();
             this.panel2.SuspendLayout();
@@ -276,35 +276,38 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýMãRFIDToolStripMenuItem,
-            this.quảnLýNhânViênToolStripMenuItem,
-            this.quảnLýHệThốngToolStripMenuItem});
+            this.QuanLyRFIDToolTrip,
+            this.QLNhanVienToolStrip,
+            this.QLLanDuongToolStrip});
             this.menuStrip1.Location = new System.Drawing.Point(265, 157);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(375, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(476, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // quảnLýMãRFIDToolStripMenuItem
+            // QuanLyRFIDToolTrip
             // 
-            this.quảnLýMãRFIDToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quảnLýMãRFIDToolStripMenuItem.Name = "quảnLýMãRFIDToolStripMenuItem";
-            this.quảnLýMãRFIDToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
-            this.quảnLýMãRFIDToolStripMenuItem.Text = "Quản Lý Mã RFID";
+            this.QuanLyRFIDToolTrip.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuanLyRFIDToolTrip.Name = "QuanLyRFIDToolTrip";
+            this.QuanLyRFIDToolTrip.Size = new System.Drawing.Size(118, 20);
+            this.QuanLyRFIDToolTrip.Text = "Quản Lý Mã RFID";
+            this.QuanLyRFIDToolTrip.Click += new System.EventHandler(this.QuanLyRFIDToolTrip_Click);
             // 
-            // quảnLýNhânViênToolStripMenuItem
+            // QLNhanVienToolStrip
             // 
-            this.quảnLýNhânViênToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quảnLýNhânViênToolStripMenuItem.Name = "quảnLýNhânViênToolStripMenuItem";
-            this.quảnLýNhânViênToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
-            this.quảnLýNhânViênToolStripMenuItem.Text = "Quản Lý Nhân Viên";
+            this.QLNhanVienToolStrip.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QLNhanVienToolStrip.Name = "QLNhanVienToolStrip";
+            this.QLNhanVienToolStrip.Size = new System.Drawing.Size(127, 20);
+            this.QLNhanVienToolStrip.Text = "Quản Lý Nhân Viên";
+            this.QLNhanVienToolStrip.Click += new System.EventHandler(this.QLNhanVienToolStrip_Click);
             // 
-            // quảnLýHệThốngToolStripMenuItem
+            // QLLanDuongToolStrip
             // 
-            this.quảnLýHệThốngToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quảnLýHệThốngToolStripMenuItem.Name = "quảnLýHệThốngToolStripMenuItem";
-            this.quảnLýHệThốngToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
-            this.quảnLýHệThốngToolStripMenuItem.Text = "Quản Lý Hệ Thống";
+            this.QLLanDuongToolStrip.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QLLanDuongToolStrip.Name = "QLLanDuongToolStrip";
+            this.QLLanDuongToolStrip.Size = new System.Drawing.Size(131, 20);
+            this.QLLanDuongToolStrip.Text = "Quản Lý Làn Đường";
+            this.QLLanDuongToolStrip.Click += new System.EventHandler(this.QLLanDuongToolStrip_Click);
             // 
             // FrmQlHeThong
             // 
@@ -361,8 +364,8 @@
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Button btnDoiMK;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýMãRFIDToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýNhânViênToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýHệThốngToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem QuanLyRFIDToolTrip;
+        private System.Windows.Forms.ToolStripMenuItem QLNhanVienToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem QLLanDuongToolStrip;
     }
 }

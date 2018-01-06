@@ -24,7 +24,7 @@ namespace DATN
                     lblMaNV.Text = LoginInfo.UserId.ToString();
                     lblHoTen.Text = showInfo.Name;
                     var gt = showInfo.Sex;
-                    lblGioiTinh.Text = gt == 1 ? @"Nam" : @"Nữ";
+                    lblGioiTinh.Text = showInfo.Sex;
                     lblSoDienThoai.Text = showInfo.Phone;
                     lblDiaChi.Text = showInfo.Address;
                     lblChucVu.Text = LoginInfo.Role;
@@ -58,6 +58,27 @@ namespace DATN
         private void FrmQlHeThong_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void QuanLyRFIDToolTrip_Click(object sender, EventArgs e)
+        {
+            var qLyRfid= new FrmRfid();
+            qLyRfid.Show();
+            Hide();
+        }
+
+        private void QLNhanVienToolStrip_Click(object sender, EventArgs e)
+        {
+            var qLNhanVien= new FrmQlttNhanVien();
+            qLNhanVien.Show();
+            Hide();
+        }
+
+        private void QLLanDuongToolStrip_Click(object sender, EventArgs e)
+        {
+            var qLyLanDuong=new FrmQLLanDuong();
+            qLyLanDuong.Show();
+            Hide();
         }
     }
 }

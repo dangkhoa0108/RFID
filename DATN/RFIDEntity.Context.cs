@@ -26,6 +26,7 @@ namespace DATN
         }
     
         public virtual DbSet<InfomationUser> InfomationUsers { get; set; }
+        public virtual DbSet<LoaiXe> LoaiXes { get; set; }
         public virtual DbSet<RFID_User> RFID_User { get; set; }
         public virtual DbSet<RFIDManage> RFIDManages { get; set; }
         public virtual DbSet<Role> Roles { get; set; }

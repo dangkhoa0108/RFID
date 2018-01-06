@@ -15,7 +15,7 @@ namespace DATN
     public partial class RFID_User
     {
         public int ID { get; set; }
-        public int RFID { get; set; }
+        public string RFID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     

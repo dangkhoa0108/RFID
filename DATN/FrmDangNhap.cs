@@ -23,7 +23,6 @@ namespace DATN
             if (e.KeyChar == 13)
                 btnLogin.Focus();
         }
-
         private void btnLogin_Click(object sender, System.EventArgs e)
         {
             string user = tbUser.Text;

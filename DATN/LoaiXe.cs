@@ -12,23 +12,19 @@ namespace DATN
     using System;
     using System.Collections.Generic;
     
-    public partial class RFIDManage
+    public partial class LoaiXe
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RFIDManage()
+        public LoaiXe()
         {
-            this.RFID_User = new HashSet<RFID_User>();
+            this.RFIDManages = new HashSet<RFIDManage>();
         }
     
-        public string RFID { get; set; }
-        public string RFID_Name { get; set; }
-        public string RFID_Address { get; set; }
-        public Nullable<double> RFID_Money { get; set; }
-        public string RFID_CarID { get; set; }
-        public Nullable<int> RFID_LoaiXe { get; set; }
+        public int ID { get; set; }
+        public string LoaiXe1 { get; set; }
+        public Nullable<double> SoTien { get; set; }
     
-        public virtual LoaiXe LoaiXe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RFID_User> RFID_User { get; set; }
+        public virtual ICollection<RFIDManage> RFIDManages { get; set; }
     }
 }
