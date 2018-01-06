@@ -59,6 +59,15 @@ namespace DATN
                     _db.Users.Add(user);
                     _db.SaveChanges();
                     MessageBox.Show(@"Add success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    User idUs = _db.Users.OrderByDescending(x => x.ID).Take(1).SingleOrDefault();
+                    if (idUs != null)
+                    {
+                        LoginInfo.MaNV = idUs.ID;
+                        LoginInfo.isAddUser = 1;
+                    }
+                    var frmQl= new FrmQLTTNhanVien();
+                    frmQl.Show();
+                    Hide();
                 }
                 else
                 {

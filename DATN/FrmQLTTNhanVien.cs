@@ -16,8 +16,16 @@ namespace DATN
         public FrmQLTTNhanVien()
         {
             InitializeComponent();
-            LoadData();
-            BindingData();
+            if (LoginInfo.isAddUser != 1)
+            {
+                LoadData();
+                BindingData();
+            }
+            else
+            {
+                LoadData();
+                isAddUserLoad();
+            }
         }
 
         private void txtMaNV_KeyPress(object sender, KeyPressEventArgs e)
@@ -106,6 +114,18 @@ namespace DATN
             }
         }
 
+        void isAddUserLoad()
+        {
+            try
+            {
+                txtMaNV.Text = LoginInfo.MaNV.ToString();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
         void BindingData()
         {
             txtMaNV.DataBindings.Clear();
@@ -126,6 +146,28 @@ namespace DATN
         {
             try
             {
+                int ID = LoginInfo.MaNV;
+                InfomationUser info = new InfomationUser
+                {
+                    UserID = LoginInfo.MaNV,
+                    Name = txtHoTen.Text,
+                    Sex = cbGioiTinh.Text,
+                    Phone = txtSoDienThoai.Text,
+                    Address = txtDiaChi.Text
+                };
+                //var check = _db.Users.SingleOrDefault(i => i.ID.Equals(ID));
+                //if (check != null)
+                //{
+                //    User us = new User
+                //    {
+                //        RoleID = int.Parse(cbChucVu.SelectedValue.ToString())
+                //    };
+                //    _db.Users.Add(us);
+                //}
+                _db.InfomationUsers.Add(info);
+                _db.SaveChanges();
+                LoadData();
+                BindingData();
 
             }
             catch (Exception e)
@@ -139,13 +181,24 @@ namespace DATN
         {
             try
             {
-                DialogResult result; 
-                result=MessageBox.Show(@"First, Add Nomal User and Pass ", @"Warring", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result == DialogResult.OK)
+                int k = int.Parse(txtMaNV.Text);
+                var check = _db.InfomationUsers.SingleOrDefault(i => i.UserID.Equals(k));
+                if (check != null)
                 {
-                    var frmCreate= new frmCreateUser();
-                    frmCreate.ShowDialog();
+                    DialogResult result;
+                    result = MessageBox.Show(@"First, Add Nomal User and Pass ", @"Warring", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
+                    {
+                        var frmCreate = new frmCreateUser();
+                        frmCreate.Show();
+                        Hide();
+                    }
                 }
+                else
+                {
+                    Add();
+                }
+
             }
             catch (Exception exception)
             {
