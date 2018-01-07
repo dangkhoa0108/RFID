@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.picBoxConnecting = new System.Windows.Forms.PictureBox();
@@ -44,6 +45,7 @@
             this.btnDong = new System.Windows.Forms.Button();
             this.btnMo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lstRFID = new System.Windows.Forms.ListBox();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBienSo = new System.Windows.Forms.TextBox();
@@ -52,7 +54,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtMaRFID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lstRFID = new System.Windows.Forms.ListBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.lblday = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txtDu = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxConnecting)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -102,9 +108,9 @@
             // 
             // lblTrangthai
             // 
-            this.lblTrangthai.Location = new System.Drawing.Point(131, 56);
+            this.lblTrangthai.Location = new System.Drawing.Point(131, 52);
             this.lblTrangthai.Name = "lblTrangthai";
-            this.lblTrangthai.Size = new System.Drawing.Size(71, 19);
+            this.lblTrangthai.Size = new System.Drawing.Size(103, 23);
             this.lblTrangthai.TabIndex = 3;
             this.lblTrangthai.Text = "label3";
             // 
@@ -128,6 +134,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Ngắt";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -140,9 +147,11 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Kết nối";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblday);
             this.groupBox2.Controls.Add(this.picBoxTime);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(562, 46);
@@ -235,6 +244,8 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.txtDu);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.lstRFID);
             this.panel1.Controls.Add(this.txtSoTien);
             this.panel1.Controls.Add(this.label5);
@@ -249,6 +260,15 @@
             this.panel1.Size = new System.Drawing.Size(552, 185);
             this.panel1.TabIndex = 20;
             // 
+            // lstRFID
+            // 
+            this.lstRFID.FormattingEnabled = true;
+            this.lstRFID.Location = new System.Drawing.Point(237, 4);
+            this.lstRFID.Name = "lstRFID";
+            this.lstRFID.Size = new System.Drawing.Size(309, 173);
+            this.lstRFID.TabIndex = 8;
+            this.lstRFID.Click += new System.EventHandler(this.lstRFID_Click);
+            // 
             // txtSoTien
             // 
             this.txtSoTien.Location = new System.Drawing.Point(87, 80);
@@ -262,9 +282,9 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 82);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 15);
+            this.label5.Size = new System.Drawing.Size(35, 15);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Số Tiền";
+            this.label5.Text = "Tổng";
             // 
             // txtBienSo
             // 
@@ -317,13 +337,40 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Mã RFID";
             // 
-            // lstRFID
+            // serialPort1
             // 
-            this.lstRFID.FormattingEnabled = true;
-            this.lstRFID.Location = new System.Drawing.Point(237, 4);
-            this.lstRFID.Name = "lstRFID";
-            this.lstRFID.Size = new System.Drawing.Size(309, 173);
-            this.lstRFID.TabIndex = 8;
+            this.serialPort1.PortName = "COM4";
+            // 
+            // lblday
+            // 
+            this.lblday.AutoSize = true;
+            this.lblday.Location = new System.Drawing.Point(148, 41);
+            this.lblday.Name = "lblday";
+            this.lblday.Size = new System.Drawing.Size(44, 17);
+            this.lblday.TabIndex = 1;
+            this.lblday.Text = "label9";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // txtDu
+            // 
+            this.txtDu.Location = new System.Drawing.Point(87, 111);
+            this.txtDu.Name = "txtDu";
+            this.txtDu.Size = new System.Drawing.Size(126, 20);
+            this.txtDu.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 113);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 15);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Số Dư";
             // 
             // FrmQLLanDuong
             // 
@@ -341,11 +388,13 @@
             this.Name = "FrmQLLanDuong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmQLLanDuong";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmQLLanDuong_FormClosed);
             this.Load += new System.EventHandler(this.FrmQLLanDuong_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxConnecting)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTime)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxBarrier)).EndInit();
@@ -382,5 +431,10 @@
         private System.Windows.Forms.PictureBox picBoxConnecting;
         private System.Windows.Forms.PictureBox picBoxTime;
         private System.Windows.Forms.ListBox lstRFID;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Label lblday;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox txtDu;
+        private System.Windows.Forms.Label label9;
     }
 }

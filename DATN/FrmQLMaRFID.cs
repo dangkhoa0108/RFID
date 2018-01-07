@@ -51,7 +51,11 @@ namespace DATN
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Search();
+            serialPort1.Open();
+            string data = serialPort1.ReadLine();
+            tbRFID.ResetText();
+            tbRFID.Text = data;
+            serialPort1.Close();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
