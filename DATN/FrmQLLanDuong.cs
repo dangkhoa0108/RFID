@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 using System.IO.Ports;
-
-using System.Xml;
 
 namespace DATN
 {
@@ -80,7 +73,12 @@ namespace DATN
 
             }
 
-            else this.lstRFID.Items.Add(text);
+            else
+            {
+                //this.txtMaRFID.ResetText();
+                this.txtMaRFID.Text = text;
+                this.lstRFID.Items.Add(text);
+            }
 
         }
         private void DataReceive(object obj, SerialDataReceivedEventArgs e)
@@ -114,36 +112,93 @@ namespace DATN
 
         private void lstRFID_Click(object sender, EventArgs e)
         {
+            //submit();
+        }
+
+        void submit()
+        {
             try
             {
-                var click = lstRFID.SelectedItem.ToString();
+                //var click = lstRFID.SelectedItem.ToString();
+                var click = txtMaRFID.Text;
+                LoginInfo.RFID = click;
+                //var click = test.Substring(0,8).ToString();
                 var check = _db.RFIDManages.Where(i => i.RFID.Equals(click)).SingleOrDefault();
                 if (check == null)
                     MessageBox.Show("Xe không có trong CSDL");
                 else
                 {
-                    txtMaRFID.Text = click.ToString();
+                    //txtMaRFID.Text = click.ToString();
                     string id = txtMaRFID.ToString();
                     var isCar = _db.RFIDManages.Where(i => i.RFID.Equals(click)).SingleOrDefault();
                     if (isCar != null)
                     {
+                        txtBienSo.ResetText();
+                        txtTenDangKy.ResetText();
+                        txtSoTien.ResetText();
+                        txtDu.ResetText();
+                        //int? loaiXe = isCar.RFID_LoaiXe;
+
                         txtBienSo.Text = isCar.RFID_CarID;
                         txtTenDangKy.Text = isCar.RFID_Name;
                         txtSoTien.Text = isCar.RFID_Money.ToString();
                         int? loaiXe = isCar.RFID_LoaiXe;
-                        var tienBiTru = _db.LoaiXes.Where(i => i.LoaiXe1.Equals(loaiXe)).SingleOrDefault();
-                        double? kk = tienBiTru.SoTien;
-                        txtDu.Text = (isCar.RFID_Money - kk).ToString();
-                        RFIDManage edit = _db.RFIDManages.Find(click);
-                        if (edit != null)
+                        if (loaiXe != null)
                         {
-                            edit.RFID_Money = double.Parse(txtDu.Text);
-                            _db.SaveChanges();
-                            MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(@"Can't not Edit  RFID", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            double? money = isCar.RFID_Money;
+                            if (money>5000)
+                            {
+                                var tienBiTru = (from u in _db.LoaiXes join m in _db.RFIDManages on u.ID equals m.RFID_LoaiXe where m.RFID.Equals(click) select new { u.SoTien }).SingleOrDefault();
+                                double kk = double.Parse(tienBiTru.SoTien.ToString());
+                                //var tienBiTru = _db.LoaiXes.Local.Where(i => i.ID.Equals(loaiXe)).SingleOrDefault();
+
+                                txtDu.Text = (isCar.RFID_Money - kk).ToString();
+                                RFIDManage edit = _db.RFIDManages.Find(click);
+                                if (edit != null)
+                                {
+                                    edit.RFID_Money = double.Parse(txtDu.Text);
+                                    _db.SaveChanges();
+                                    MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(@"Can't not Edit  RFID", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                DialogResult result;
+                                result = MessageBox.Show(@"Vui lòng nạp thêm tiền ", @"Warring", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                                if (result == DialogResult.OK)
+                                {
+                                    var frmMoney = new Add_Money();
+                                    frmMoney.ShowDialog();
+                                    var newTien = (from u in _db.RFIDManages where u.RFID.Equals(click) select new { u.RFID_Money }).SingleOrDefault();
+                                    txtSoTien.Text = newTien.RFID_Money.ToString();
+                                    txtDu.ResetText();
+                                    money = double.Parse(newTien.RFID_Money.ToString());
+                                    if (money > 5000)
+                                    {
+                                        var tienBiTru = (from u in _db.LoaiXes join m in _db.RFIDManages on u.ID equals m.RFID_LoaiXe where m.RFID.Equals(click) select new { u.SoTien }).SingleOrDefault();
+                                        double kk = double.Parse(tienBiTru.SoTien.ToString());
+                                        //var tienBiTru = _db.LoaiXes.Local.Where(i => i.ID.Equals(loaiXe)).SingleOrDefault();
+
+                                        txtDu.Text = (money - kk).ToString();
+                                        RFIDManage edit = _db.RFIDManages.Find(click);
+                                        if (edit != null)
+                                        {
+                                            edit.RFID_Money = double.Parse(txtDu.Text);
+                                            _db.SaveChanges();
+                                            MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(@"Can't not Edit  RFID", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                            }
+                            
                         }
                     }
                 }
@@ -174,6 +229,13 @@ namespace DATN
         private void btnDong_Click(object sender, EventArgs e)
         {
             serialPort1.Write("Dong");
+        }
+
+        private void txtMaRFID_TextChanged(object sender, EventArgs e)
+        {
+            var i = txtMaRFID.Text.ToString();
+            if (!string.IsNullOrEmpty(i))
+            { submit(); }
         }
     }
 

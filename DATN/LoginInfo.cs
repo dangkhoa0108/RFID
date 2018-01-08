@@ -14,5 +14,7 @@ namespace DATN
         public static string Role;
         public static int MaNV;
         public static int isAddUser;
+
+        public static string RFID;
     }
 }

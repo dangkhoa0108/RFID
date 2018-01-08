@@ -355,6 +355,7 @@
             this.txtMaRFID.Name = "txtMaRFID";
             this.txtMaRFID.Size = new System.Drawing.Size(126, 20);
             this.txtMaRFID.TabIndex = 1;
+            this.txtMaRFID.TextChanged += new System.EventHandler(this.txtMaRFID_TextChanged);
             // 
             // label7
             // 
@@ -368,7 +369,7 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.PortName = "COM12";
+            this.serialPort1.PortName = "COM4";
             // 
             // timer1
             // 
