@@ -37,6 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblday = new System.Windows.Forms.Label();
             this.picBoxTime = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,6 +46,8 @@
             this.btnDong = new System.Windows.Forms.Button();
             this.btnMo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtDu = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.lstRFID = new System.Windows.Forms.ListBox();
             this.txtSoTien = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,10 +58,7 @@
             this.txtMaRFID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.lblday = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtDu = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxConnecting)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -161,6 +161,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "NGÀY GIỜ HỆ THỐNG";
             // 
+            // lblday
+            // 
+            this.lblday.AutoSize = true;
+            this.lblday.Location = new System.Drawing.Point(148, 41);
+            this.lblday.Name = "lblday";
+            this.lblday.Size = new System.Drawing.Size(44, 17);
+            this.lblday.TabIndex = 1;
+            this.lblday.Text = "label9";
+            // 
             // picBoxTime
             // 
             this.picBoxTime.Image = global::DATN.Properties.Resources.Blacksmith_Stylized_Numbers_Wall_Clock___Black_517797;
@@ -207,6 +216,7 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ĐIỀU KHIỂN BARRIER";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // picBoxBarrier
             // 
@@ -228,6 +238,7 @@
             this.btnDong.TabIndex = 1;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = false;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnMo
             // 
@@ -240,6 +251,7 @@
             this.btnMo.TabIndex = 0;
             this.btnMo.Text = "Mở";
             this.btnMo.UseVisualStyleBackColor = false;
+            this.btnMo.Click += new System.EventHandler(this.btnMo_Click);
             // 
             // panel1
             // 
@@ -259,6 +271,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(552, 185);
             this.panel1.TabIndex = 20;
+            // 
+            // txtDu
+            // 
+            this.txtDu.Location = new System.Drawing.Point(87, 111);
+            this.txtDu.Name = "txtDu";
+            this.txtDu.Size = new System.Drawing.Size(126, 20);
+            this.txtDu.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 113);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 15);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Số Dư";
             // 
             // lstRFID
             // 
@@ -339,38 +368,12 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.PortName = "COM4";
-            // 
-            // lblday
-            // 
-            this.lblday.AutoSize = true;
-            this.lblday.Location = new System.Drawing.Point(148, 41);
-            this.lblday.Name = "lblday";
-            this.lblday.Size = new System.Drawing.Size(44, 17);
-            this.lblday.TabIndex = 1;
-            this.lblday.Text = "label9";
+            this.serialPort1.PortName = "COM12";
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // txtDu
-            // 
-            this.txtDu.Location = new System.Drawing.Point(87, 111);
-            this.txtDu.Name = "txtDu";
-            this.txtDu.Size = new System.Drawing.Size(126, 20);
-            this.txtDu.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 113);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 15);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Số Dư";
             // 
             // FrmQLLanDuong
             // 

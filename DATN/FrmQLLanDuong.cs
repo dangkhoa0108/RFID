@@ -160,6 +160,21 @@ namespace DATN
             frmMain.Show();
             Hide();
         }
+
+        private void btnMo_Click(object sender, EventArgs e)
+        {
+            serialPort1.Write("Mo");
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            serialPort1.Write("Dong");
+        }
     }
 
 
