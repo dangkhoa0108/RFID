@@ -17,7 +17,7 @@ namespace DATN
         public int ID { get; set; }
         public string RFID { get; set; }
         public Nullable<int> UserID { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public string Date { get; set; }
     
         public virtual RFIDManage RFIDManage { get; set; }
         public virtual User User { get; set; }

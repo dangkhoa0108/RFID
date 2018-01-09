@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cb823b5ad59f4415acfc580bf3d46d81" Name="Diagram1">
+      <Diagram DiagramId="c22b24c7017f4caa8f5b0b2817d4b270" Name="Diagram1">
         <EntityTypeShape EntityType="RFIDModel.InfomationUser" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="RFIDModel.LoaiXe" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RFIDModel.RFID_User" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />

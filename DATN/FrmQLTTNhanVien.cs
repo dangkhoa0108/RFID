@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -64,7 +65,7 @@ namespace DATN
             {
                 int id = LoginInfo.UserId;
                 string role = LoginInfo.Role;
-                if (role.Equals("Admin"))
+                if (role.Equals("Quản lý"))
                 {
                     var listNhanVien = _db.InfomationUsers.Select(u => new
                     {
@@ -92,8 +93,11 @@ namespace DATN
                     btnThem.Enabled = false;
                     btnSua.Enabled = false;
                     btnXoa.Enabled = false;
-                    btnTim.Enabled = false;
                     txtTim.Enabled = false;
+                    var newColor = Color.FromArgb(165, 164, 164);
+                    btnThem.BackColor = newColor;
+                    btnSua.BackColor = newColor;
+                    btnXoa.BackColor = newColor;
                 }
 
                 var listRole = _db.Roles.ToList();
@@ -159,6 +163,36 @@ namespace DATN
                 MessageBox.Show(e.Message);
             }
         }
+
+        void Search()
+        {
+            try
+            {
+                string stringText = txtTim.Text;
+                var checkString = _db.InfomationUsers.Where(i => i.Address.Equals(stringText) ||
+                                                             i.Name.Contains(stringText) || i.Phone.Contains(stringText)||
+                                                             i.User.Role.Role1.Contains(stringText)
+                                                             ).Select(u => new
+                                                             {
+                                                                 u.UserID,
+                                                                 u.Name,
+                                                                 u.Sex,
+                                                                 u.Address,
+                                                                 u.Phone,
+                                                                 u.User.Role.Role1
+                                                             }).ToList();
+
+                if (checkString.ToList().Count > 0)
+                {
+                    dgvQLTTNhanVien.DataSource = checkString.ToList();
+                    BindingData();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
         #endregion
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -189,5 +223,11 @@ namespace DATN
                 MessageBox.Show(exception.Message);
             }
         }
+
+        private void txtTim_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
     }
 }

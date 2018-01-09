@@ -105,10 +105,15 @@ namespace DATN
                 LoginInfo.RFID = click;
                 var check = _db.RFIDManages.SingleOrDefault(i => i.RFID.Equals(click));
                 if (check == null)
+                {
                     MessageBox.Show(@"Xe không có trong CSDL");
+                    txtBienSo.ResetText();
+                    txtTenDangKy.ResetText();
+                    txtSoTien.ResetText();
+                    txtDu.ResetText();
+                }
                 else
                 {
-                    string id = txtMaRFID.ToString();
                     var isCar = _db.RFIDManages.SingleOrDefault(i => i.RFID.Equals(click));
                     if (isCar != null)
                     {
@@ -125,7 +130,7 @@ namespace DATN
                             double? money = isCar.RFID_Money;
                             if (money > 5000)
                             {
-                                Check(id ,isCar, click, money);
+                                Check(isCar, click, money);
                             }
                             else
                             {
@@ -140,7 +145,7 @@ namespace DATN
                                     money = double.Parse(newTien?.RFID_Money.ToString() ?? throw new InvalidOperationException());
                                     if (money > 5000)
                                     {
-                                        Check(id, isCar, click, money);
+                                        Check(isCar, click, money);
                                     }
                                 }
                             }
@@ -154,7 +159,7 @@ namespace DATN
             }
         }
 
-        void Check(string id, RFIDManage isCar, string click, double? money)
+        void Check(RFIDManage isCar, string click, double? money)
         {
             var tienBiTru = (_db.LoaiXes
                 .Join(_db.RFIDManages, u => u.ID, m => m.RFID_LoaiXe, (u, m) => new { u, m })
@@ -166,16 +171,17 @@ namespace DATN
             RFIDManage edit = _db.RFIDManages.Find(click);
             if (edit != null)
             {
+
                 edit.RFID_Money = double.Parse(txtDu.Text);
                 RFID_User info = new RFID_User
                 {
-                    RFID = id,
-                    UserID = LoginInfo.MaNV,
-                    Date = DateTime.Now
+                    RFID = click,
+                    UserID = LoginInfo.UserId,
+                    Date = DateTime.Now.ToString("yyyy-MM-dd")
                 };
                 _db.RFID_User.Add(info);
                 _db.SaveChanges();
-                MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Có xe qua trạm", @"Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

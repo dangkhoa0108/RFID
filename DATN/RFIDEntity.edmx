@@ -31,7 +31,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RFID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserID" Type="int" />
-          <Property Name="Date" Type="date" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RFIDManage">
           <Key>
@@ -192,7 +192,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RFID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="RFIDManage" Relationship="Self.FK_RFID_User_RFIDManage" FromRole="RFID_User" ToRole="RFIDManage" />
           <NavigationProperty Name="User" Relationship="Self.FK_RFID_User_User" FromRole="RFID_User" ToRole="User" />
         </EntityType>

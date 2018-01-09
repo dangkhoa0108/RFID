@@ -37,6 +37,11 @@
             this.txtMaNV = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvQLTTNhanVien = new System.Windows.Forms.DataGridView();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,15 +49,9 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.btnTim = new System.Windows.Forms.Button();
             this.picBoxQLTTNhanVien = new System.Windows.Forms.PictureBox();
             this.cbGioiTinh = new System.Windows.Forms.ComboBox();
             this.cbChucVu = new System.Windows.Forms.ComboBox();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLTTNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxQLTTNhanVien)).BeginInit();
             this.SuspendLayout();
@@ -149,6 +148,36 @@
             this.dgvQLTTNhanVien.Size = new System.Drawing.Size(579, 331);
             this.dgvQLTTNhanVien.TabIndex = 18;
             // 
+            // UserID
+            // 
+            this.UserID.DataPropertyName = "UserID";
+            this.UserID.HeaderText = "Mã NV";
+            this.UserID.Name = "UserID";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Tên";
+            this.Name.Name = "Name";
+            // 
+            // Sex
+            // 
+            this.Sex.DataPropertyName = "Sex";
+            this.Sex.HeaderText = "Giới Tính";
+            this.Sex.Name = "Sex";
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Địa Chỉ";
+            this.Address.Name = "Address";
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "Số Điện Thoại";
+            this.Phone.Name = "Phone";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -179,10 +208,11 @@
             // 
             // txtTim
             // 
-            this.txtTim.Location = new System.Drawing.Point(89, 200);
+            this.txtTim.Location = new System.Drawing.Point(12, 200);
             this.txtTim.Name = "txtTim";
-            this.txtTim.Size = new System.Drawing.Size(126, 20);
+            this.txtTim.Size = new System.Drawing.Size(203, 20);
             this.txtTim.TabIndex = 13;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             this.txtTim.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTim_KeyPress);
             // 
             // btnXoa
@@ -222,18 +252,6 @@
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // btnTim
-            // 
-            this.btnTim.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnTim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTim.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTim.Location = new System.Drawing.Point(8, 198);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(75, 23);
-            this.btnTim.TabIndex = 14;
-            this.btnTim.Text = "Tìm";
-            this.btnTim.UseVisualStyleBackColor = false;
-            // 
             // picBoxQLTTNhanVien
             // 
             this.picBoxQLTTNhanVien.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -264,36 +282,6 @@
             this.cbChucVu.Size = new System.Drawing.Size(126, 21);
             this.cbChucVu.TabIndex = 25;
             // 
-            // UserID
-            // 
-            this.UserID.DataPropertyName = "UserID";
-            this.UserID.HeaderText = "Mã NV";
-            this.UserID.Name = "UserID";
-            // 
-            // Name
-            // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Tên";
-            this.Name.Name = "Name";
-            // 
-            // Sex
-            // 
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "Giới Tính";
-            this.Sex.Name = "Sex";
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Địa Chỉ";
-            this.Address.Name = "Address";
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "Số Điện Thoại";
-            this.Phone.Name = "Phone";
-            // 
             // FrmQLTTNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,7 +295,6 @@
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.btnTim);
             this.Controls.Add(this.dgvQLTTNhanVien);
             this.Controls.Add(this.txtSoDienThoai);
             this.Controls.Add(this.label7);
@@ -351,7 +338,6 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.PictureBox picBoxQLTTNhanVien;
         private System.Windows.Forms.ComboBox cbGioiTinh;
         private System.Windows.Forms.ComboBox cbChucVu;

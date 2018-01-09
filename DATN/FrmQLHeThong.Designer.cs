@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
+            this.picBoxNV = new System.Windows.Forms.PictureBox();
             this.btnDoiMK = new System.Windows.Forms.Button();
             this.lblChucVu = new System.Windows.Forms.Label();
             this.lblDiaChi = new System.Windows.Forms.Label();
@@ -47,18 +48,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.picBoxNV = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.QuanLyRFIDToolTrip = new System.Windows.Forms.ToolStripMenuItem();
             this.QLNhanVienToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.QLLanDuongToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvInfo = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUniversity)).BeginInit();
             this.panel2.SuspendLayout();
@@ -73,13 +73,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(867, 117);
+            this.panel1.Size = new System.Drawing.Size(818, 117);
             this.panel1.TabIndex = 0;
             // 
             // picBoxUniversity
             // 
             this.picBoxUniversity.Image = global::DATN.Properties.Resources.unnamed;
-            this.picBoxUniversity.Location = new System.Drawing.Point(3, 3);
+            this.picBoxUniversity.Location = new System.Drawing.Point(12, 3);
             this.picBoxUniversity.Name = "picBoxUniversity";
             this.picBoxUniversity.Size = new System.Drawing.Size(116, 111);
             this.picBoxUniversity.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,6 +112,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.btnDangXuat);
+            this.panel2.Controls.Add(this.picBoxNV);
             this.panel2.Controls.Add(this.btnDoiMK);
             this.panel2.Controls.Add(this.lblChucVu);
             this.panel2.Controls.Add(this.lblDiaChi);
@@ -125,7 +126,6 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.picBoxNV);
             this.panel2.Location = new System.Drawing.Point(3, 157);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(259, 394);
@@ -143,6 +143,16 @@
             this.btnDangXuat.Text = "Đăng Xuất";
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // picBoxNV
+            // 
+            this.picBoxNV.Image = global::DATN.Properties.Resources.manager_512;
+            this.picBoxNV.Location = new System.Drawing.Point(39, 3);
+            this.picBoxNV.Name = "picBoxNV";
+            this.picBoxNV.Size = new System.Drawing.Size(150, 150);
+            this.picBoxNV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxNV.TabIndex = 0;
+            this.picBoxNV.TabStop = false;
             // 
             // btnDoiMK
             // 
@@ -271,14 +281,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Mã NV";
             // 
-            // picBoxNV
-            // 
-            this.picBoxNV.Location = new System.Drawing.Point(73, 3);
-            this.picBoxNV.Name = "picBoxNV";
-            this.picBoxNV.Size = new System.Drawing.Size(100, 125);
-            this.picBoxNV.TabIndex = 0;
-            this.picBoxNV.TabStop = false;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -328,19 +330,8 @@
             this.Date});
             this.dgvInfo.Location = new System.Drawing.Point(267, 250);
             this.dgvInfo.Name = "dgvInfo";
-            this.dgvInfo.Size = new System.Drawing.Size(588, 301);
+            this.dgvInfo.Size = new System.Drawing.Size(548, 301);
             this.dgvInfo.TabIndex = 5;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(418, 207);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(285, 25);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "THÔNG TIN XE QUA TRẠM";
             // 
             // ID
             // 
@@ -372,12 +363,23 @@
             this.Date.HeaderText = "Ngày Quét";
             this.Date.Name = "Date";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(418, 207);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(285, 25);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "THÔNG TIN XE QUA TRẠM";
+            // 
             // FrmQlHeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(867, 563);
+            this.ClientSize = new System.Drawing.Size(818, 563);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dgvInfo);
             this.Controls.Add(this.panel2);
@@ -389,7 +391,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmQlHeThong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmQlHeThong_FormClosed);
