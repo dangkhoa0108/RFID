@@ -62,19 +62,19 @@ namespace DATN
 
         {
 
-            if (this.lstRFID.InvokeRequired)
+            if (lstRFID.InvokeRequired)
 
             {
-                SetTextCallback d = SetText; // khởi tạo 1 delegate mới gọi đến SetText
-                this.Invoke(d, text);
+                SetTextCallback d = SetText; 
+                Invoke(d, text);
 
             }
 
             else
             {
                 //this.txtMaRFID.ResetText();
-                this.txtMaRFID.Text = text;
-                this.lstRFID.Items.Add(text);
+                txtMaRFID.Text = text;
+                lstRFID.Items.Add(text);
             }
 
         }
@@ -84,7 +84,7 @@ namespace DATN
             _inputData = serialPort1.ReadLine();
             if (_inputData != String.Empty)
             {
-                SetText(_inputData); // Chính vì vậy phải sử dụng ủy quyền tại đây. Gọi delegate đã khai báo trước đó.
+                SetText(_inputData); 
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -106,6 +106,7 @@ namespace DATN
                 var check = _db.RFIDManages.SingleOrDefault(i => i.RFID.Equals(click));
                 if (check == null)
                 {
+                    serialPort1.Write("NotCSDL");
                     MessageBox.Show(@"Xe không có trong CSDL");
                     txtBienSo.ResetText();
                     txtTenDangKy.ResetText();
@@ -113,44 +114,48 @@ namespace DATN
                     txtDu.ResetText();
                 }
                 else
-                {
+                {   
                     var isCar = _db.RFIDManages.SingleOrDefault(i => i.RFID.Equals(click));
-                    if (isCar != null)
-                    {
-                        txtBienSo.ResetText();
-                        txtTenDangKy.ResetText();
-                        txtSoTien.ResetText();
-                        txtDu.ResetText();
-                        txtBienSo.Text = isCar.RFID_CarID;
-                        txtTenDangKy.Text = isCar.RFID_Name;
-                        txtSoTien.Text = isCar.RFID_Money.ToString();
-                        int? loaiXe = isCar.RFID_LoaiXe;
-                        if (loaiXe != null)
+                    serialPort1.Write("YesCSDL");
+               
+                        if (isCar != null)
                         {
-                            double? money = isCar.RFID_Money;
-                            if (money > 5000)
+                            txtBienSo.ResetText();
+                            txtTenDangKy.ResetText();
+                            txtSoTien.ResetText();
+                            txtDu.ResetText();
+                            txtBienSo.Text = isCar.RFID_CarID;
+                            txtTenDangKy.Text = isCar.RFID_Name;
+                            txtSoTien.Text = isCar.RFID_Money.ToString();
+                            int? loaiXe = isCar.RFID_LoaiXe;
+                            if (loaiXe != null)
                             {
-                                Check(isCar, click, money);
-                            }
-                            else
-                            {
-                                var result = MessageBox.Show(@"Vui lòng nạp thêm tiền ", @"Warring", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                                if (result == DialogResult.OK)
+                                double? money = isCar.RFID_Money;
+                                if (money > 5000)
                                 {
-                                    var frmMoney = new Add_Money();
-                                    frmMoney.ShowDialog();
-                                    var newTien = (from u in _db.RFIDManages where u.RFID.Equals(click) select new { u.RFID_Money }).SingleOrDefault();
-                                    txtSoTien.Text = newTien?.RFID_Money.ToString();
-                                    txtDu.ResetText();
-                                    money = double.Parse(newTien?.RFID_Money.ToString() ?? throw new InvalidOperationException());
-                                    if (money > 5000)
+                                    Check(isCar, click, money);
+                                }
+                                else
+                                {
+                                    var result = MessageBox.Show(@"Vui lòng nạp thêm tiền ", @"Warring", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                                    if (result == DialogResult.OK)
                                     {
-                                        Check(isCar, click, money);
+                                        var frmMoney = new Add_Money();
+                                        frmMoney.ShowDialog();
+                                        var newTien = (from u in _db.RFIDManages where u.RFID.Equals(click) select new { u.RFID_Money }).SingleOrDefault();
+                                        txtSoTien.Text = newTien?.RFID_Money.ToString();
+                                        txtDu.ResetText();
+                                        money = double.Parse(newTien?.RFID_Money.ToString() ?? throw new InvalidOperationException());
+                                        if (money > 5000)
+                                        {
+                                            Check(isCar, click, money);
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
+                    
+                   
                 }
             }
             catch (Exception ex)
@@ -177,7 +182,7 @@ namespace DATN
                 {
                     RFID = click,
                     UserID = LoginInfo.UserId,
-                    Date = DateTime.Now.ToString("yyyy-MM-dd")
+                    Date = DateTime.Now.ToString()
                 };
                 _db.RFID_User.Add(info);
                 _db.SaveChanges();

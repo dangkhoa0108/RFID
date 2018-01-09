@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -254,9 +254,9 @@
             // RFID_Money
             // 
             this.RFID_Money.DataPropertyName = "RFID_Money";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.RFID_Money.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RFID_Money.DefaultCellStyle = dataGridViewCellStyle1;
             this.RFID_Money.HeaderText = "Số Tiền";
             this.RFID_Money.Name = "RFID_Money";
             // 
@@ -310,7 +310,7 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.PortName = "COM4";
+            this.serialPort1.PortName = "COM12";
             // 
             // FrmRfid
             // 

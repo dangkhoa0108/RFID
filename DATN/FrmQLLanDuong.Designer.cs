@@ -369,7 +369,7 @@
             // 
             // serialPort1
             // 
-            this.serialPort1.PortName = "COM6";
+            this.serialPort1.PortName = "COM12";
             // 
             // timer1
             // 

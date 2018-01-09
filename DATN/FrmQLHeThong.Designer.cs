@@ -73,7 +73,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(818, 117);
+            this.panel1.Size = new System.Drawing.Size(841, 117);
             this.panel1.TabIndex = 0;
             // 
             // picBoxUniversity
@@ -328,9 +328,9 @@
             this.RFID_CarID,
             this.Name,
             this.Date});
-            this.dgvInfo.Location = new System.Drawing.Point(267, 250);
+            this.dgvInfo.Location = new System.Drawing.Point(271, 250);
             this.dgvInfo.Name = "dgvInfo";
-            this.dgvInfo.Size = new System.Drawing.Size(548, 301);
+            this.dgvInfo.Size = new System.Drawing.Size(562, 301);
             this.dgvInfo.TabIndex = 5;
             // 
             // ID
@@ -354,13 +354,14 @@
             // Name
             // 
             this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Người Quét";
+            this.Name.HeaderText = "Nhân viên";
             this.Name.Name = "Name";
             // 
             // Date
             // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Date.DataPropertyName = "Date";
-            this.Date.HeaderText = "Ngày Quét";
+            this.Date.HeaderText = "Ngày ";
             this.Date.Name = "Date";
             // 
             // label9
@@ -379,7 +380,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(818, 563);
+            this.ClientSize = new System.Drawing.Size(841, 563);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dgvInfo);
             this.Controls.Add(this.panel2);
