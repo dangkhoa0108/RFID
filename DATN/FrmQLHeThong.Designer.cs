@@ -53,12 +53,12 @@
             this.QLNhanVienToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.QLLanDuongToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvInfo = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUniversity)).BeginInit();
             this.panel2.SuspendLayout();
@@ -331,31 +331,6 @@
             this.dgvInfo.Size = new System.Drawing.Size(588, 301);
             this.dgvInfo.TabIndex = 5;
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "STT";
-            this.ID.Name = "ID";
-            // 
-            // RFID_Name
-            // 
-            this.RFID_Name.HeaderText = "Tên Chủ Xe";
-            this.RFID_Name.Name = "RFID_Name";
-            // 
-            // RFID_CarID
-            // 
-            this.RFID_CarID.HeaderText = "Biển Số";
-            this.RFID_CarID.Name = "RFID_CarID";
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Người Quét";
-            this.Name.Name = "Name";
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Ngày Quét";
-            this.Date.Name = "Date";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -366,6 +341,36 @@
             this.label9.Size = new System.Drawing.Size(285, 25);
             this.label9.TabIndex = 6;
             this.label9.Text = "THÔNG TIN XE QUA TRẠM";
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "STT";
+            this.ID.Name = "ID";
+            // 
+            // RFID_Name
+            // 
+            this.RFID_Name.DataPropertyName = "RFID_Name";
+            this.RFID_Name.HeaderText = "Tên Chủ Xe";
+            this.RFID_Name.Name = "RFID_Name";
+            // 
+            // RFID_CarID
+            // 
+            this.RFID_CarID.DataPropertyName = "RFID_CarID";
+            this.RFID_CarID.HeaderText = "Biển Số";
+            this.RFID_CarID.Name = "RFID_CarID";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Người Quét";
+            this.Name.Name = "Name";
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Ngày Quét";
+            this.Date.Name = "Date";
             // 
             // FrmQlHeThong
             // 
@@ -429,11 +434,11 @@
         private System.Windows.Forms.ToolStripMenuItem QLNhanVienToolStrip;
         private System.Windows.Forms.ToolStripMenuItem QLLanDuongToolStrip;
         private System.Windows.Forms.DataGridView dgvInfo;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_CarID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.Label label9;
     }
 }
