@@ -84,7 +84,6 @@ namespace DATN
                 Search();
                 BindingData();
             }
-
         }
 
         #region methods

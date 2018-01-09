@@ -52,11 +52,19 @@
             this.QuanLyRFIDToolTrip = new System.Windows.Forms.ToolStripMenuItem();
             this.QLNhanVienToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.QLLanDuongToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvInfo = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFID_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RFID_CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUniversity)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNV)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -281,7 +289,7 @@
             this.QLLanDuongToolStrip});
             this.menuStrip1.Location = new System.Drawing.Point(265, 157);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(476, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(384, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -309,12 +317,64 @@
             this.QLLanDuongToolStrip.Text = "Quản Lý Làn Đường";
             this.QLLanDuongToolStrip.Click += new System.EventHandler(this.QLLanDuongToolStrip_Click);
             // 
+            // dgvInfo
+            // 
+            this.dgvInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.RFID_Name,
+            this.RFID_CarID,
+            this.Name,
+            this.Date});
+            this.dgvInfo.Location = new System.Drawing.Point(267, 250);
+            this.dgvInfo.Name = "dgvInfo";
+            this.dgvInfo.Size = new System.Drawing.Size(588, 301);
+            this.dgvInfo.TabIndex = 5;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "STT";
+            this.ID.Name = "ID";
+            // 
+            // RFID_Name
+            // 
+            this.RFID_Name.HeaderText = "Tên Chủ Xe";
+            this.RFID_Name.Name = "RFID_Name";
+            // 
+            // RFID_CarID
+            // 
+            this.RFID_CarID.HeaderText = "Biển Số";
+            this.RFID_CarID.Name = "RFID_CarID";
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Người Quét";
+            this.Name.Name = "Name";
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Ngày Quét";
+            this.Date.Name = "Date";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(418, 207);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(285, 25);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "THÔNG TIN XE QUA TRẠM";
+            // 
             // FrmQlHeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(867, 563);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dgvInfo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -336,6 +396,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNV)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,5 +428,12 @@
         private System.Windows.Forms.ToolStripMenuItem QuanLyRFIDToolTrip;
         private System.Windows.Forms.ToolStripMenuItem QLNhanVienToolStrip;
         private System.Windows.Forms.ToolStripMenuItem QLLanDuongToolStrip;
+        private System.Windows.Forms.DataGridView dgvInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RFID_CarID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DATN
@@ -24,7 +18,7 @@ namespace DATN
             else
             {
                 LoadData();
-                isAddUserLoad();
+                IsAddUserLoad();
             }
         }
 
@@ -114,7 +108,7 @@ namespace DATN
             }
         }
 
-        void isAddUserLoad()
+        void IsAddUserLoad()
         {
             try
             {
@@ -146,7 +140,7 @@ namespace DATN
         {
             try
             {
-                int ID = LoginInfo.MaNV;
+                int id = LoginInfo.MaNV;
                 InfomationUser info = new InfomationUser
                 {
                     UserID = LoginInfo.MaNV,
@@ -155,20 +149,10 @@ namespace DATN
                     Phone = txtSoDienThoai.Text,
                     Address = txtDiaChi.Text
                 };
-                //var check = _db.Users.SingleOrDefault(i => i.ID.Equals(ID));
-                //if (check != null)
-                //{
-                //    User us = new User
-                //    {
-                //        RoleID = int.Parse(cbChucVu.SelectedValue.ToString())
-                //    };
-                //    _db.Users.Add(us);
-                //}
                 _db.InfomationUsers.Add(info);
                 _db.SaveChanges();
                 LoadData();
                 BindingData();
-
             }
             catch (Exception e)
             {

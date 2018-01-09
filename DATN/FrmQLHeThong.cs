@@ -29,6 +29,20 @@ namespace DATN
                     lblDiaChi.Text = showInfo.Address;
                     lblChucVu.Text = LoginInfo.Role;
                 }
+
+                var inFo = (from u in _db.RFID_User
+                            join k in _db.RFIDManages on u.RFID equals k.RFID
+                            join m in _db.Users on u.UserID equals m.ID
+                            join x in _db.InfomationUsers on m.ID equals x.UserID
+                            select new
+                            {
+                                u.ID,
+                                k.RFID_Name,
+                                k.RFID_CarID,
+                                x.Name,
+                                u.Date
+                            }).ToList();
+                dgvInfo.DataSource = inFo;
             }
             catch (Exception e)
             {
@@ -40,7 +54,7 @@ namespace DATN
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            var frmChangePass=new FrmDoiMatKhau();
+            var frmChangePass = new FrmDoiMatKhau();
             frmChangePass.Show();
             this.Hide();
         }
@@ -62,21 +76,21 @@ namespace DATN
 
         private void QuanLyRFIDToolTrip_Click(object sender, EventArgs e)
         {
-            var qLyRfid= new FrmRfid();
+            var qLyRfid = new FrmRfid();
             qLyRfid.Show();
             Hide();
         }
 
         private void QLNhanVienToolStrip_Click(object sender, EventArgs e)
         {
-            var qLNhanVien= new FrmQLTTNhanVien();
+            var qLNhanVien = new FrmQLTTNhanVien();
             qLNhanVien.Show();
             Hide();
         }
 
         private void QLLanDuongToolStrip_Click(object sender, EventArgs e)
         {
-            var qLyLanDuong=new FrmQLLanDuong();
+            var qLyLanDuong = new FrmQLLanDuong();
             qLyLanDuong.Show();
             Hide();
         }
