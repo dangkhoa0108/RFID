@@ -11,6 +11,7 @@ namespace DATN
         public FrmQLTTNhanVien()
         {
             InitializeComponent();
+            txtHoTen.Focus();
             if (LoginInfo.isAddUser != 1)
             {
                 LoadData();
@@ -61,13 +62,14 @@ namespace DATN
 
         void LoadData()
         {
+           
             try
             {
                 int id = LoginInfo.UserId;
                 string role = LoginInfo.Role;
                 if (role.Equals("Quản lý"))
                 {
-                    var listNhanVien = _db.InfomationUsers.Select(u => new
+                    var listNhanVien = _db.InfomationUsers.OrderBy(u=>u.UserID).Select(u => new
                     {
                         u.UserID,
                         u.Name,
@@ -164,6 +166,59 @@ namespace DATN
             }
         }
 
+        void Edit()
+        {
+            try
+            {
+                int id = int.Parse(dgvQLTTNhanVien.SelectedCells[0].OwningRow.Cells["UserID"].Value.ToString());
+                var edit = _db.InfomationUsers.Where(i => i.UserID.Equals(id)).SingleOrDefault();
+                if (edit != null)
+                {
+                    edit.Name = txtHoTen.Text;
+                    edit.Sex = cbGioiTinh.Text;
+                    edit.Phone = txtSoDienThoai.Text;
+                    edit.Address = txtDiaChi.Text;
+                    edit.User.RoleID = int.Parse(cbChucVu.SelectedValue.ToString());
+                    _db.SaveChanges();
+                    MessageBox.Show(@"Edit success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    BindingData();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        void Delete()
+        {
+            try
+            {
+                int id = int.Parse(dgvQLTTNhanVien.SelectedCells[0].OwningRow.Cells["UserID"].Value.ToString());
+                var del = _db.InfomationUsers.Where(i => i.UserID.Equals(id)).SingleOrDefault();
+                if (del != null)
+                {
+                    _db.InfomationUsers.Remove(del);
+                    var us = _db.Users.Where(u => u.ID.Equals(id)).SingleOrDefault();
+                    {
+                        if (us != null)
+                        {
+                            _db.Users.Remove(us);
+                        }
+                    }
+                    _db.SaveChanges();
+                    MessageBox.Show(@"Delete success", @"Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    BindingData();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
         void Search()
         {
             try
@@ -229,5 +284,14 @@ namespace DATN
             Search();
         }
 
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            Edit();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            Delete();
+        }
     }
 }

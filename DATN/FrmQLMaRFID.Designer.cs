@@ -46,17 +46,17 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.picBoxRFIDTag = new System.Windows.Forms.PictureBox();
             this.dgvRFID = new System.Windows.Forms.DataGridView();
+            this.tbAddress = new System.Windows.Forms.TextBox();
+            this.lbAddress = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbLoaiXe = new System.Windows.Forms.ComboBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.RFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_Money = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID_CarID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoaiXe1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbAddress = new System.Windows.Forms.TextBox();
-            this.lbAddress = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbLoaiXe = new System.Windows.Forms.ComboBox();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxRFIDTag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRFID)).BeginInit();
             this.SuspendLayout();
@@ -232,46 +232,6 @@
             this.dgvRFID.Size = new System.Drawing.Size(652, 374);
             this.dgvRFID.TabIndex = 15;
             // 
-            // RFID
-            // 
-            this.RFID.DataPropertyName = "RFID";
-            this.RFID.HeaderText = "RFID";
-            this.RFID.Name = "RFID";
-            this.RFID.ReadOnly = true;
-            // 
-            // RFID_Name
-            // 
-            this.RFID_Name.DataPropertyName = "RFID_Name";
-            this.RFID_Name.HeaderText = "Tên Đăng Ký";
-            this.RFID_Name.Name = "RFID_Name";
-            // 
-            // RFID_Address
-            // 
-            this.RFID_Address.DataPropertyName = "RFID_Address";
-            this.RFID_Address.HeaderText = "Địa Chỉ";
-            this.RFID_Address.Name = "RFID_Address";
-            // 
-            // RFID_Money
-            // 
-            this.RFID_Money.DataPropertyName = "RFID_Money";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.RFID_Money.DefaultCellStyle = dataGridViewCellStyle1;
-            this.RFID_Money.HeaderText = "Số Tiền";
-            this.RFID_Money.Name = "RFID_Money";
-            // 
-            // RFID_CarID
-            // 
-            this.RFID_CarID.DataPropertyName = "RFID_CarID";
-            this.RFID_CarID.HeaderText = "Biển Số";
-            this.RFID_CarID.Name = "RFID_CarID";
-            // 
-            // LoaiXe1
-            // 
-            this.LoaiXe1.DataPropertyName = "LoaiXe1";
-            this.LoaiXe1.HeaderText = "Loại Xe";
-            this.LoaiXe1.Name = "LoaiXe1";
-            // 
             // tbAddress
             // 
             this.tbAddress.Location = new System.Drawing.Point(91, 148);
@@ -311,6 +271,46 @@
             // serialPort1
             // 
             this.serialPort1.PortName = "COM12";
+            // 
+            // RFID
+            // 
+            this.RFID.DataPropertyName = "RFID";
+            this.RFID.HeaderText = "RFID";
+            this.RFID.Name = "RFID";
+            this.RFID.ReadOnly = true;
+            // 
+            // RFID_Name
+            // 
+            this.RFID_Name.DataPropertyName = "RFID_Name";
+            this.RFID_Name.HeaderText = "Tên Đăng Ký";
+            this.RFID_Name.Name = "RFID_Name";
+            // 
+            // RFID_Address
+            // 
+            this.RFID_Address.DataPropertyName = "RFID_Address";
+            this.RFID_Address.HeaderText = "Địa Chỉ";
+            this.RFID_Address.Name = "RFID_Address";
+            // 
+            // RFID_Money
+            // 
+            this.RFID_Money.DataPropertyName = "RFID_Money";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.RFID_Money.DefaultCellStyle = dataGridViewCellStyle1;
+            this.RFID_Money.HeaderText = "Số Tiền";
+            this.RFID_Money.Name = "RFID_Money";
+            // 
+            // RFID_CarID
+            // 
+            this.RFID_CarID.DataPropertyName = "RFID_CarID";
+            this.RFID_CarID.HeaderText = "Biển Số";
+            this.RFID_CarID.Name = "RFID_CarID";
+            // 
+            // LoaiXe1
+            // 
+            this.LoaiXe1.DataPropertyName = "LoaiXe1";
+            this.LoaiXe1.HeaderText = "Loại Xe";
+            this.LoaiXe1.Name = "LoaiXe1";
             // 
             // FrmRfid
             // 
@@ -374,12 +374,12 @@
         private System.Windows.Forms.Label lbAddress;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbLoaiXe;
+        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_Money;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFID_CarID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoaiXe1;
-        private System.IO.Ports.SerialPort serialPort1;
     }
 }

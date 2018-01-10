@@ -18,7 +18,7 @@ namespace DATN
         {
             try
             {
-                var showInfo = (from u in _db.InfomationUsers where u.ID.Equals(LoginInfo.UserId) select u).FirstOrDefault();
+                var showInfo = (from u in _db.InfomationUsers where u.UserID.Equals(LoginInfo.UserId) select u).FirstOrDefault();
                 if (showInfo != null)
                 {
                     lblMaNV.Text = LoginInfo.UserId.ToString();
